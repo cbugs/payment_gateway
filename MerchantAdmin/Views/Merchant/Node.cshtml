@@ -1,0 +1,36 @@
+﻿@model PaymentGatewayData.Models.Merchant
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>Merchant Form</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Node">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MerchantId" />
+            <div class="form-group">
+                <label asp-for="Username" class="control-label"></label>
+                <input asp-for="Username" class="form-control" />
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>               
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Submit" class="btn btn-primary btn-block" />
+                </div>
+                <div  class="form-group col-md-6">
+                    <a asp-action="Index"  class="btn btn-secondary btn-block"><i class="fa fa-table"></i> Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
