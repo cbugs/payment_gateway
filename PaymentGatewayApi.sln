@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28803.452
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGatewayApi", "PaymentGatewayApi\PaymentGatewayApi.csproj", "{CAA1F73F-F357-4D6A-9BD4-22FEA2897001}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway.Api", "PaymentGateway.Api\PaymentGateway.Api.csproj", "{CAA1F73F-F357-4D6A-9BD4-22FEA2897001}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MerchantAdmin", "MerchantAdmin\MerchantAdmin.csproj", "{FF8E67C1-3EE7-4EC5-A5BC-8E5EDE157258}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway.Merchant.Admin", "PaymentGateway.Merchant.Admin\PaymentGateway.Merchant.Admin.csproj", "{FF8E67C1-3EE7-4EC5-A5BC-8E5EDE157258}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGatewayData", "PaymentGatewayData\PaymentGatewayData.csproj", "{D8E0B826-6EE1-4EA5-9BF8-CA6DF5F386DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway.Data", "PaymentGateway.Data\PaymentGateway.Data.csproj", "{D8E0B826-6EE1-4EA5-9BF8-CA6DF5F386DC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGatewayTests", "PaymentGatewayTests\PaymentGatewayTests.csproj", "{0805FB2C-456F-4037-85E6-BFE4E1B48F2B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway.Tests", "PaymentGateway.Tests\PaymentGateway.Tests.csproj", "{0805FB2C-456F-4037-85E6-BFE4E1B48F2B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

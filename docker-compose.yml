@@ -3,7 +3,7 @@ services:
   api: 
     build: 
       context: "."
-      dockerfile: PaymentGatewayApi/Dockerfile
+      dockerfile: PaymentGateway.Api/Dockerfile
     depends_on: 
       - db
     ports: 
@@ -18,7 +18,7 @@ services:
   web: 
     build: 
       context: "."
-      dockerfile: MerchantAdmin/Dockerfile
+      dockerfile: PaymentGateway.Merchant.Admin/Dockerfile
     depends_on: 
       - db
     ports: 
