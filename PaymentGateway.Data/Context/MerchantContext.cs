@@ -1,11 +1,11 @@
-﻿using PaymentGatewayData.Models;
+﻿using PaymentGateway.Data.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PaymentGatewayData.Context
+namespace PaymentGateway.Data.Context
 {
     public class MerchantContext:DbContext
     {

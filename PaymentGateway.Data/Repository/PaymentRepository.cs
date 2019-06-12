@@ -1,13 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PaymentGatewayData.Context;
-using PaymentGatewayData.Models;
-using PaymentGatewayData.Repository.Interface;
+using PaymentGateway.Data.Context;
+using PaymentGateway.Data.Models;
+using PaymentGateway.Data.Repository.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PaymentGatewayData.Repository
+namespace PaymentGateway.Data.Repository
 {
     public class PaymentRepository : IPaymentRepository
     {

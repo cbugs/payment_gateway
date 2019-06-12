@@ -1,13 +1,13 @@
-using PaymentGatewayData.Context;
+using PaymentGateway.Data.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PaymentGatewayData.Repository;
-using PaymentGatewayData.Models;
-using PaymentGatewayData.Repository.Interface;
+using PaymentGateway.Data.Repository;
+using PaymentGateway.Data.Models;
+using PaymentGateway.Data.Repository.Interface;
 
 namespace PaymentGatewayData
 {

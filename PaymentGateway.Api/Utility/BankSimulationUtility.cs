@@ -1,10 +1,10 @@
-﻿using PaymentGatewayApi.Abstract;
+﻿using PaymentGateway.Api.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PaymentGatewayApi.Utility
+namespace PaymentGateway.Api.Utility
 {
     public class BankSimulationUtility
     {

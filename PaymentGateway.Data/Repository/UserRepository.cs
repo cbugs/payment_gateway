@@ -1,12 +1,12 @@
-﻿using PaymentGatewayData.Context;
-using PaymentGatewayData.Models;
+﻿using PaymentGateway.Data.Context;
+using PaymentGateway.Data.Models;
 using System;
-using PaymentGatewayData.Repository.Interface;
+using PaymentGateway.Data.Repository.Interface;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PaymentGatewayData.Repository
+namespace PaymentGateway.Data.Repository
 {
     public class UserRepository : IUserRepository
     {

@@ -5,7 +5,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/core/sdk:2.1-stretch AS build
 WORKDIR /src
 COPY ["PaymentGateway.Api/PaymentGateway.Api.csproj", "PaymentGateway.Api/"]
-COPY ["PaymentGateway.Data/PaymentGateway.Data.csproj", "PaymentGateway.Data/"]
+COPY ["PaymentGateway.Data./PaymentGateway.Data..csproj", "PaymentGateway.Data./"]
 RUN dotnet restore "PaymentGateway.Api/PaymentGateway.Api.csproj"
 COPY . .
 WORKDIR "/src/PaymentGateway.Api"

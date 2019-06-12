@@ -1,10 +1,10 @@
-﻿using PaymentGatewayApi.Abstract.Factory;
+﻿using PaymentGateway.Api.Abstract.Factory;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PaymentGatewayApi.Abstract
+namespace PaymentGateway.Api.Abstract
 {
     public class PaymentObject
     {

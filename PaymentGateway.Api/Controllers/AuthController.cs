@@ -5,14 +5,14 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using PaymentGatewayData.Repository;
-using PaymentGatewayData.Models;
+using PaymentGateway.Data.Repository;
+using PaymentGateway.Data.Models;
 using Microsoft.Extensions.Logging;
-using PaymentGatewayApi.Models;
+using PaymentGateway.Api.Models;
 using Microsoft.Extensions.Options;
-using PaymentGatewayData.Repository.Interface;
+using PaymentGateway.Data.Repository.Interface;
 
-namespace PaymentGatewayApi.Controllers
+namespace PaymentGateway.Api.Controllers
 {
     [Route("v1/")]
     [ApiController]

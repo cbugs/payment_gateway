@@ -5,19 +5,23 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using PaymentGatewayData.Models;
-using PaymentGatewayData.Context;
-using PaymentGatewayData.Repository.Interface;
+using PaymentGateway.Data.Models;
+using PaymentGateway.Data.Context;
+using PaymentGateway.Data.Repository.Interface;
+using PaymentGateway.Merchant.Admin.Models;
+using AutoMapper;
 
 namespace MerchantAdmin.Controllers
 {
     public class MerchantController : Controller
     {
         private readonly IMerchantRepository _merchantRepository;
+        private readonly IMapper _mapper;
 
-        public MerchantController(IMerchantRepository merchantRepository)
+        public MerchantController(IMerchantRepository merchantRepository, IMapper mapper)
         {
             _merchantRepository = merchantRepository;
+            _mapper = mapper;
         }
 
         [Route("/")]
@@ -29,31 +33,43 @@ namespace MerchantAdmin.Controllers
         public ActionResult Node(Guid id = new Guid())
         {
             if (id == Guid.Empty)
-                return View(new Merchant());
+                return View(new MerchantViewModel());
             else
-                return View(_merchantRepository.Get(id));
+                return View(_mapper.Map<MerchantViewModel>(_merchantRepository.Get(id)));
         }
 
         [HttpPost]
-        public ActionResult Node(Merchant merchant)
+        public ActionResult Node(MerchantViewModel merchant)
         {
-            if(!String.IsNullOrEmpty(merchant.Username) && !String.IsNullOrEmpty(merchant.Password))
+            // if user already exists and there is a change on username
+            if (_merchantRepository.CheckIfUsernameExists(merchant.Username) && merchant.Username != merchant.OldUsername)
             {
-                if (merchant.MerchantId == Guid.Empty)
+                ModelState.AddModelError("Username", "User Already Exists.");
+            }
+
+            // if new merchant create
+            if (merchant.MerchantId == Guid.Empty)
+            {
+                // check if password has been set on create return RedirectToAction("Index");
+                if (String.IsNullOrEmpty(merchant.Password))
                 {
-                    //if user already exists redirect to index
-                    if (_merchantRepository.CheckIfUsernameExists(merchant.Username))
-                    {
-                        return RedirectToAction("Index");
-                    }
-                    _merchantRepository.Add(merchant);
+                    ModelState.AddModelError("Password", "Please enter a password.");
                 }
-                else
+                if (ModelState.IsValid)
                 {
-                    _merchantRepository.Update(merchant);
+                    _merchantRepository.Add(_mapper.Map<Merchant>(merchant));
+                    return RedirectToAction("Index");
                 }
             }
-            return RedirectToAction("Index");
+
+            // try to update
+            if (ModelState.IsValid)
+            {
+                _merchantRepository.Update(_mapper.Map<Merchant>(merchant));
+                return RedirectToAction("Index");
+            }
+           
+            return View(merchant);
         }
 
         public ActionResult Delete(Guid id)

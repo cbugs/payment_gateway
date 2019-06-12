@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using PaymentGatewayData.Context;
-using PaymentGatewayData.Models;
+using PaymentGateway.Data.Context;
+using PaymentGateway.Data.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -11,8 +11,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PaymentGatewayData.Repository.Interface;
-using PaymentGatewayData.Repository;
+using PaymentGateway.Data.Repository.Interface;
+using PaymentGateway.Data.Repository;
+using AutoMapper;
 
 namespace MerchantAdmin
 {
@@ -35,6 +36,9 @@ namespace MerchantAdmin
 
             // Data Repository Services
             services.AddScoped<IMerchantRepository, MerchantRepository>();
+
+            // Auto Mapper
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

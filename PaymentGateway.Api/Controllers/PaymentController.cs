@@ -1,18 +1,18 @@
 ﻿using System;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PaymentGatewayData.Models;
-using PaymentGatewayApi.Abstract;
-using PaymentGatewayApi.Abstract.Factory;
-using PaymentGatewayData.Repository;
+using PaymentGateway.Data.Models;
+using PaymentGateway.Api.Abstract;
+using PaymentGateway.Api.Abstract.Factory;
+using PaymentGateway.Data.Repository;
 using Microsoft.Extensions.Logging;
-using PaymentGatewayApi.Models;
-using PaymentGatewayApi.Utility;
-using PaymentGatewayData.Repository.Interface;
+using PaymentGateway.Api.Models;
+using PaymentGateway.Api.Utility;
+using PaymentGateway.Data.Repository.Interface;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace PaymentGatewayApi.Controllers
+namespace PaymentGateway.Api.Controllers
 {
 
     /// <summary>

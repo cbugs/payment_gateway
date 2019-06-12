@@ -1,6 +1,6 @@
-﻿using PaymentGatewayData.Context;
-using PaymentGatewayData.Models;
-using PaymentGatewayData.Repository.Interface;
+﻿using PaymentGateway.Data.Context;
+using PaymentGateway.Data.Models;
+using PaymentGateway.Data.Repository.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PaymentGatewayData.Repository
+namespace PaymentGateway.Data.Repository
 {
     public class MerchantRepository : IMerchantRepository
     {
@@ -60,7 +60,7 @@ namespace PaymentGatewayData.Repository
 
         public void Update(Merchant entity)
         {
-            entity.Password = HashPassword(entity.Password);
+            entity.Password = String.IsNullOrEmpty(entity.Password)?entity.Password:HashPassword(entity.Password);
             _context.Merchants.Update(entity);
             _context.SaveChanges();
         }

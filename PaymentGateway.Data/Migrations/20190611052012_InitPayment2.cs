@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace PaymentGatewayData.Migrations
+namespace PaymentGateway.Data.Migrations
 {
     public partial class InitPayment2 : Migration
     {

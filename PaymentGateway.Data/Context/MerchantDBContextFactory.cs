@@ -7,7 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PaymentGatewayData.Context
+namespace PaymentGateway.Data.Context
 {
     public class MerchantDBContextFactory : IDesignTimeDbContextFactory<MerchantContext>
     {

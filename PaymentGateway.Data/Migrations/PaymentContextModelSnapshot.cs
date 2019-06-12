@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PaymentGatewayData.Context;
+using PaymentGateway.Data.Context;
 
-namespace PaymentGatewayData.Migrations
+namespace PaymentGateway.Data.Migrations
 {
     [DbContext(typeof(PaymentContext))]
     partial class PaymentContextModelSnapshot : ModelSnapshot
@@ -19,7 +19,7 @@ namespace PaymentGatewayData.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("PaymentGatewayData.Models.Payment", b =>
+            modelBuilder.Entity("PaymentGateway.Data.Models.Payment", b =>
                 {
                     b.Property<Guid>("PaymentId")
                         .ValueGeneratedOnAdd();
@@ -39,7 +39,7 @@ namespace PaymentGatewayData.Migrations
                     b.ToTable("Payments");
                 });
 
-            modelBuilder.Entity("PaymentGatewayData.Models.User", b =>
+            modelBuilder.Entity("PaymentGateway.Data.Models.User", b =>
                 {
                     b.Property<Guid>("UserId")
                         .ValueGeneratedOnAdd();
@@ -51,9 +51,9 @@ namespace PaymentGatewayData.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("PaymentGatewayData.Models.Payment", b =>
+            modelBuilder.Entity("PaymentGateway.Data.Models.Payment", b =>
                 {
-                    b.HasOne("PaymentGatewayData.Models.User")
+                    b.HasOne("PaymentGateway.Data.Models.User")
                         .WithMany("Payments")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

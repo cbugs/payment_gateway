@@ -1,12 +1,12 @@
 ﻿using Newtonsoft.Json;
-using PaymentGatewayApi.Utility;
+using PaymentGateway.Api.Utility;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PaymentGatewayApi.Abstract
+namespace PaymentGateway.Api.Abstract
 {
     public class EWallet : AbstractPayment
     {

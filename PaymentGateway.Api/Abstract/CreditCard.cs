@@ -1,14 +1,14 @@
 ﻿using Newtonsoft.Json;
-using PaymentGatewayApi.Utility;
-using PaymentGatewayData.Models;
-using PaymentGatewayData.Repository;
+using PaymentGateway.Api.Utility;
+using PaymentGateway.Data.Models;
+using PaymentGateway.Data.Repository;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PaymentGatewayApi.Abstract
+namespace PaymentGateway.Api.Abstract
 {
     public class CreditCard : AbstractPayment
     {

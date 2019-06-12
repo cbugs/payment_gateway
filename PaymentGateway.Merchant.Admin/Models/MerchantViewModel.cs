@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PaymentGateway.Data.Models
+namespace PaymentGateway.Merchant.Admin.Models
 {
-    public class Merchant
+    public class MerchantViewModel
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid MerchantId { get; set; }
+        [Required]
         public string Username { get; set; }
+        [DataType(DataType.Password)]
+        [RegularExpression(@".{8,}", ErrorMessage = "Password must be at least 8 characters")]
         public string Password { get; set; }
-
+        public string OldUsername { get; set; }
     }
 }

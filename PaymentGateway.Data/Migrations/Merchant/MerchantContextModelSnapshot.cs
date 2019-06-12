@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using PaymentGatewayData.Context;
+using PaymentGateway.Data.Context;
 
-namespace PaymentGatewayData.Migrations.Merchant
+namespace PaymentGateway.Data.Migrations.Merchant
 {
     [DbContext(typeof(MerchantContext))]
     partial class MerchantContextModelSnapshot : ModelSnapshot
@@ -19,7 +19,7 @@ namespace PaymentGatewayData.Migrations.Merchant
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("PaymentGatewayData.Models.Merchant", b =>
+            modelBuilder.Entity("PaymentGateway.Data.Models.Merchant", b =>
                 {
                     b.Property<Guid>("MerchantId")
                         .ValueGeneratedOnAdd();

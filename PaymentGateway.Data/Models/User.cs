@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PaymentGatewayData.Models
+namespace PaymentGateway.Data.Models
 {
     public class User
     {

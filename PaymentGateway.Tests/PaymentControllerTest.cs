@@ -1,17 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using PaymentGatewayApi.Controllers;
-using PaymentGatewayApi.Models;
-using PaymentGatewayApi.Abstract;
-using PaymentGatewayApi.Abstract.Factory;
-using PaymentGatewayData.Models;
-using PaymentGatewayData.Repository;
+using PaymentGateway.Api.Controllers;
+using PaymentGateway.Api.Models;
+using PaymentGateway.Api.Abstract;
+using PaymentGateway.Api.Abstract.Factory;
+using PaymentGateway.Data.Models;
+using PaymentGateway.Data.Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
 
-namespace PaymentGatewayTests
+namespace PaymentGateway.Tests
 {
     public class PaymentControllerTest
     {

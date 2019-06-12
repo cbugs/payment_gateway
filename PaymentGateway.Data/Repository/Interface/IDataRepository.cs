@@ -1,10 +1,10 @@
-﻿using PaymentGatewayData.Models;
+﻿using PaymentGateway.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PaymentGatewayData.Repository.Interface
+namespace PaymentGateway.Data.Repository.Interface
 {
     public interface IDataRepository<TEntity>
     {
