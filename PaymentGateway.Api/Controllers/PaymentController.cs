@@ -65,7 +65,7 @@ namespace PaymentGateway.Api.Controllers
         }
 
         /// <summary>
-        /// The API to make patments by users.
+        /// The API to make payments by users.
         /// </summary>
         /// <param name="paymentModel"></param>
         /// <returns>
@@ -113,7 +113,13 @@ namespace PaymentGateway.Api.Controllers
 
         }
 
-
+        /// <summary>
+        /// Get the list of payments done by user of authenticated merchant
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns>
+        /// List of payments
+        /// </returns>
         [HttpPost]
         [Route("GetPayments")]
         public ActionResult<string> GetPayments(UserRequestModel user)
