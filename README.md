@@ -9,7 +9,7 @@ The following was tested on Windows machine only.
 # Steps To Install
 1. Run "docker-compose build".
 2. Run "docker-compose up".
-3. Go to database folder and run the file "run.sh" or Connect Sql Server and run the sql files.
+3. Go to database folder and run the file "run.sh" or Connect Sql Server "localhost,1434" and run the sql files.
 
 # How To Use
 1. On Browser, Go to http://localhost:8000.
