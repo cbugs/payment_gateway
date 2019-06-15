@@ -1,0 +1,8 @@
+C:\Users\psoobray\Desktop\payment_gateway\PaymentGateway.Data\bin\Debug\netstandard2.0\PaymentGateway.Domain.deps.json
+C:\Users\psoobray\Desktop\payment_gateway\PaymentGateway.Data\bin\Debug\netstandard2.0\PaymentGateway.Domain.dll
+C:\Users\psoobray\Desktop\payment_gateway\PaymentGateway.Data\bin\Debug\netstandard2.0\PaymentGateway.Domain.pdb
+C:\Users\psoobray\Desktop\payment_gateway\PaymentGateway.Data\obj\Debug\netstandard2.0\PaymentGateway.Domain.csproj.CoreCompileInputs.cache
+C:\Users\psoobray\Desktop\payment_gateway\PaymentGateway.Data\obj\Debug\netstandard2.0\PaymentGateway.Domain.AssemblyInfoInputs.cache
+C:\Users\psoobray\Desktop\payment_gateway\PaymentGateway.Data\obj\Debug\netstandard2.0\PaymentGateway.Domain.AssemblyInfo.cs
+C:\Users\psoobray\Desktop\payment_gateway\PaymentGateway.Data\obj\Debug\netstandard2.0\PaymentGateway.Domain.dll
+C:\Users\psoobray\Desktop\payment_gateway\PaymentGateway.Data\obj\Debug\netstandard2.0\PaymentGateway.Domain.pdb

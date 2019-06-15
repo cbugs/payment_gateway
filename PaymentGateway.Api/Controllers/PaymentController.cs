@@ -1,16 +1,14 @@
 ﻿using System;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using PaymentGateway.Data.Models;
 using PaymentGateway.Api.Abstract;
 using PaymentGateway.Api.Abstract.Factory;
-using PaymentGateway.Data.Repository;
 using Microsoft.Extensions.Logging;
 using PaymentGateway.Api.Models;
-using PaymentGateway.Api.Utility;
-using PaymentGateway.Data.Repository.Interface;
 using System.Collections.Generic;
 using System.Linq;
+using PaymentGateway.Service.Interface;
+using PaymentGateway.Data.Entity;
 
 namespace PaymentGateway.Api.Controllers
 {
@@ -26,15 +24,15 @@ namespace PaymentGateway.Api.Controllers
     public class PaymentController : ControllerBase
     {
 
-        private readonly IPaymentRepository _paymentRepository;
-        private readonly IUserRepository _userRepository;
+        private readonly IPaymentService _paymentService;
+        private readonly IUserService _userService;
         private readonly ILogger<PaymentController> _logger;
 
-        public PaymentController(IPaymentRepository paymentRepository, IUserRepository userRepository, ILogger<PaymentController> logger)
+        public PaymentController(IPaymentService paymentService, IUserService userService, ILogger<PaymentController> logger)
         {
             _logger = logger;
-            _paymentRepository = paymentRepository;
-            _userRepository = userRepository;
+            _paymentService = paymentService;
+            _userService = userService;
         }
 
         /// <summary>
@@ -53,7 +51,7 @@ namespace PaymentGateway.Api.Controllers
         {
             try
             {
-                Guid userID = _userRepository.RetrieveUser(user.UserId, user.UserEmail);
+                Guid userID = _userService.RetrieveUser(user.UserId, user.UserEmail);
                 _logger.LogInformation("User Create/Get Success");
                 return Ok(userID);
             }
@@ -99,7 +97,7 @@ namespace PaymentGateway.Api.Controllers
                 };
 
 
-                _paymentRepository.AddPayment(payment);
+                _paymentService.AddPayment(payment);
 
                 _logger.LogInformation("Payment Success");
                 //save payment made
@@ -126,7 +124,7 @@ namespace PaymentGateway.Api.Controllers
         {
             var merchantClaim = HttpContext.User.Claims.Where(c => c.Type == "MerchantId").FirstOrDefault();
             Guid merchantId = Guid.Parse(merchantClaim.Value);
-            List<Payment> payments = _paymentRepository.GetPaymentsByUser(user.UserId,merchantId);
+            List<Payment> payments = _paymentService.GetPaymentsByUser(user.UserId,merchantId);
             return Ok(payments);
         }
 

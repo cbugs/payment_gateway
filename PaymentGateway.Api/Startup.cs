@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -11,13 +7,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using PaymentGateway.Api.Models;
 using PaymentGateway.Data.Context;
-using PaymentGateway.Data.Models;
 using PaymentGateway.Data.Repository;
 using PaymentGateway.Data.Repository.Interface;
+using PaymentGateway.Service;
+using PaymentGateway.Service.Interface;
 using Serilog;
 using Swashbuckle.AspNetCore.Filters;
 using Swashbuckle.AspNetCore.Swagger;
@@ -59,14 +55,17 @@ namespace PaymentGatewayApi
                     };
                 });
 
+            // Inject Services
+            services.AddScoped<IMerchantRepository, MerchantRepository>();
+            services.AddScoped<IMerchantService, MerchantService>();
+            services.AddScoped<IPaymentRepository, PaymentRepository>();
+            services.AddScoped<IPaymentService, PaymentService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserService, UserService>();
+
             // DB Context Services
             services.AddDbContext<MerchantContext>(opts => opts.UseSqlServer(Configuration["ConnectionStrings:MerchantDB"]));
             services.AddDbContext<PaymentContext>(opts => opts.UseSqlServer(Configuration["ConnectionStrings:PaymentGatewayDB"]));
-
-            // Data Repository Services
-            services.AddScoped<IPaymentRepository, PaymentRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IMerchantRepository, MerchantRepository>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 

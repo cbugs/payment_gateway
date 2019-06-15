@@ -1,12 +1,6 @@
 ﻿using Newtonsoft.Json;
 using PaymentGateway.Api.Utility;
-using PaymentGateway.Data.Models;
-using PaymentGateway.Data.Repository;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace PaymentGateway.Api.Abstract
 {

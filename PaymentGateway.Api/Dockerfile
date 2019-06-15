@@ -1,11 +1,13 @@
-FROM mcr.microsoft.com/dotnet/core/aspnet:2.1-stretch-slim AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-stretch-slim AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM mcr.microsoft.com/dotnet/core/sdk:2.1-stretch AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2-stretch AS build
 WORKDIR /src
 COPY ["PaymentGateway.Api/PaymentGateway.Api.csproj", "PaymentGateway.Api/"]
-COPY ["PaymentGateway.Data./PaymentGateway.Data..csproj", "PaymentGateway.Data./"]
+COPY ["PaymentGateway.Service/PaymentGateway.Service.csproj", "PaymentGateway.Service/"]
+COPY ["PaymentGateway.Repository/PaymentGateway.Repository.csproj", "PaymentGateway.Repository/"]
+COPY ["PaymentGateway.Data/PaymentGateway.Data.csproj", "PaymentGateway.Data/"]
 RUN dotnet restore "PaymentGateway.Api/PaymentGateway.Api.csproj"
 COPY . .
 WORKDIR "/src/PaymentGateway.Api"

@@ -5,12 +5,11 @@ using System.Security.Claims;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using PaymentGateway.Data.Repository;
-using PaymentGateway.Data.Models;
 using Microsoft.Extensions.Logging;
 using PaymentGateway.Api.Models;
 using Microsoft.Extensions.Options;
 using PaymentGateway.Data.Repository.Interface;
+using PaymentGateway.Service.Interface;
 
 namespace PaymentGateway.Api.Controllers
 {
@@ -21,11 +20,12 @@ namespace PaymentGateway.Api.Controllers
         private readonly IMerchantRepository _merchantRepository;
         private readonly ILogger<AuthController> _logger;
         private readonly SecurityKeyConfiguration _securityKeyConfiguration;
+        private readonly IMerchantService _merchantService;
 
-        public AuthController(IMerchantRepository merchantRepository, ILogger<AuthController> logger, IOptions<SecurityKeyConfiguration> securityKeyConfiguration)
+        public AuthController(IMerchantService merchantService, ILogger<AuthController> logger, IOptions<SecurityKeyConfiguration> securityKeyConfiguration)
         {
             _logger = logger;
-            _merchantRepository = merchantRepository;
+            _merchantService = merchantService;
             _securityKeyConfiguration = securityKeyConfiguration.Value;
         }
 
@@ -38,7 +38,7 @@ namespace PaymentGateway.Api.Controllers
         [Route("token")]
         public ActionResult GetToken(MerchantModel merchantModel)
         {
-            var merchant = _merchantRepository.Login(merchantModel.Username, merchantModel.Password);
+            var merchant = _merchantService.Login(merchantModel.Username, merchantModel.Password);
             if (merchant == null) { _logger.LogWarning("Unauthorised Access"); return Unauthorized(); }
             try
             {
@@ -52,7 +52,7 @@ namespace PaymentGateway.Api.Controllers
                 //add claims
                 var claims = new List<Claim>();
                 claims.Add(new Claim(ClaimTypes.Role, "Merchant"));
-                claims.Add(new Claim("MerchantId", merchant.MerchantId.ToString()));
+                claims.Add(new Claim("MerchantId", merchant.Id.ToString()));
 
                 //create token
                 var token = new JwtSecurityToken(
