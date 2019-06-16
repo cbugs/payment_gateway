@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PaymentGateway.Data.Entity;
 
-namespace PaymentGateway.Data.Context
+namespace PaymentGateway.Repository.Context
 {
     public class MerchantContext : DbContext
     {

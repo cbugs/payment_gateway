@@ -1,10 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PaymentGateway.Data.Context;
 using PaymentGateway.Data.Entity;
 using PaymentGateway.Data.Repository.Interface;
+using PaymentGateway.Repository.Context;
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace PaymentGateway.Data.Repository
 {
@@ -22,37 +22,26 @@ namespace PaymentGateway.Data.Repository
             _context.Merchants.Add(entity);
             _context.SaveChanges();
         }
-
-        public Merchant GetByUsername(string Username)
-        {
-            return _context.Merchants.AsNoTracking().Where(m => m.Username == Username).FirstOrDefault();
-        }
-
         public void Delete(Merchant entity)
         {
             _context.Merchants.Remove(entity);
             _context.SaveChanges();
         }
 
-        public Merchant Get(Guid id)
-        {
-            return _context.Merchants.Find(id);
-        }
-
-        public IEnumerable<Merchant> GetAll()
-        {
-            return _context.Merchants;
-        }
-
-        public Merchant GetByUsernameAndPassword(string Username, string Password)
-        {
-            return _context.Merchants.Where(m => m.Username == Username && m.Password == Password).FirstOrDefault();
-        }
-
         public void Update(Merchant entity)
-        {          
+        {
             _context.Merchants.Update(entity);
             _context.SaveChanges();
+        }
+
+        IQueryable<Merchant> IDataRepository<Merchant>.GetAll()
+        {
+            return _context.Merchants.AsNoTracking();
+        }
+
+        public IQueryable<Merchant> GetByCondition(Expression<Func<Merchant, bool>> expression)
+        {
+            return _context.Merchants.Where(expression).AsNoTracking();
         }
     }
 }

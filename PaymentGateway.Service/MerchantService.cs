@@ -30,14 +30,14 @@ namespace PaymentGateway.Service
             _merchantRepository.Add(merchant);
         }
 
-        public Merchant Login(string Username, string Password)
+        public Merchant Login(string username, string password)
         {
-            Merchant merchant = _merchantRepository.GetByUsernameAndPassword(Username, HashPassword(Password));
+            Merchant merchant = _merchantRepository.GetByCondition(m => m.Username == username && m.Password == HashPassword(password)).FirstOrDefault();
             return merchant;
         }
-        public bool CheckIfUsernameExists(string Username)
+        public bool CheckIfUsernameExists(string username)
         {
-            Merchant merchant = _merchantRepository.GetByUsername(Username);
+            Merchant merchant = _merchantRepository.GetByCondition(m => m.Username == username).FirstOrDefault();
             return merchant != null;
         }
         public void UpdateMerchant(Merchant merchant)
@@ -51,9 +51,9 @@ namespace PaymentGateway.Service
             return _merchantRepository.GetAll().ToList();
         }
 
-        public Merchant GetMerchant(Guid id)
+        public Merchant GetMerchant(Guid Id)
         {
-            return _merchantRepository.Get(id);
+            return _merchantRepository.GetByCondition(m => m.Id == Id).FirstOrDefault();
         }
 
         public void DeleteMerchant(Merchant merchant)

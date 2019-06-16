@@ -10,3 +10,15 @@ C:\Users\psoobray\Desktop\payment_gateway\PaymentGateway.Repository\obj\Debug\ne
 C:\Users\psoobray\Desktop\payment_gateway\PaymentGateway.Repository\obj\Debug\netstandard2.0\PaymentGateway.Repository.csproj.CopyComplete
 C:\Users\psoobray\Desktop\payment_gateway\PaymentGateway.Repository\obj\Debug\netstandard2.0\PaymentGateway.Repository.dll
 C:\Users\psoobray\Desktop\payment_gateway\PaymentGateway.Repository\obj\Debug\netstandard2.0\PaymentGateway.Repository.pdb
+C:\Users\psoobray\Desktop\Horcrux\Github\payment_gateway\PaymentGateway.Repository\obj\Debug\netstandard2.0\PaymentGateway.Repository.csprojAssemblyReference.cache
+C:\Users\psoobray\Desktop\Horcrux\Github\payment_gateway\PaymentGateway.Repository\obj\Debug\netstandard2.0\PaymentGateway.Repository.csproj.CoreCompileInputs.cache
+C:\Users\psoobray\Desktop\Horcrux\Github\payment_gateway\PaymentGateway.Repository\obj\Debug\netstandard2.0\PaymentGateway.Repository.AssemblyInfoInputs.cache
+C:\Users\psoobray\Desktop\Horcrux\Github\payment_gateway\PaymentGateway.Repository\obj\Debug\netstandard2.0\PaymentGateway.Repository.AssemblyInfo.cs
+C:\Users\psoobray\Desktop\Horcrux\Github\payment_gateway\PaymentGateway.Repository\obj\Debug\netstandard2.0\PaymentGateway.Repository.dll
+C:\Users\psoobray\Desktop\Horcrux\Github\payment_gateway\PaymentGateway.Repository\obj\Debug\netstandard2.0\PaymentGateway.Repository.pdb
+C:\Users\psoobray\Desktop\Horcrux\Github\payment_gateway\PaymentGateway.Repository\bin\Debug\netstandard2.0\PaymentGateway.Repository.deps.json
+C:\Users\psoobray\Desktop\Horcrux\Github\payment_gateway\PaymentGateway.Repository\bin\Debug\netstandard2.0\PaymentGateway.Repository.dll
+C:\Users\psoobray\Desktop\Horcrux\Github\payment_gateway\PaymentGateway.Repository\bin\Debug\netstandard2.0\PaymentGateway.Repository.pdb
+C:\Users\psoobray\Desktop\Horcrux\Github\payment_gateway\PaymentGateway.Repository\bin\Debug\netstandard2.0\PaymentGateway.Data.dll
+C:\Users\psoobray\Desktop\Horcrux\Github\payment_gateway\PaymentGateway.Repository\bin\Debug\netstandard2.0\PaymentGateway.Data.pdb
+C:\Users\psoobray\Desktop\Horcrux\Github\payment_gateway\PaymentGateway.Repository\obj\Debug\netstandard2.0\PaymentGateway.Repository.csproj.CopyComplete

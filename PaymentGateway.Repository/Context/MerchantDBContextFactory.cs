@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 
-namespace PaymentGateway.Data.Context
+namespace PaymentGateway.Repository.Context
 {
     public class MerchantDBContextFactory : IDesignTimeDbContextFactory<MerchantContext>
     {

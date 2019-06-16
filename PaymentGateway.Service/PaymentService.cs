@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using PaymentGateway.Data.Entity;
 using PaymentGateway.Data.Repository.Interface;
 using PaymentGateway.Service.Interface;
@@ -8,20 +9,18 @@ namespace PaymentGateway.Service
 {
     public class PaymentService : IPaymentService
     {
-        private IUserRepository _userRepository;
-        private IPaymentRepository _paymentRepository;
-        private IMerchantRepository _merchantRepository;
+        private readonly IUserRepository _userRepository;
+        private readonly IPaymentRepository _paymentRepository;
 
-        public PaymentService(IMerchantRepository merchantRepository, IPaymentRepository paymentRepository, IUserRepository userRepository)
+        public PaymentService(IPaymentRepository paymentRepository, IUserRepository userRepository)
         {
             _userRepository = userRepository;
             _paymentRepository = paymentRepository;
-            _merchantRepository = merchantRepository;
         }
 
         public void AddPayment(Payment payment)
         {
-            var user = _userRepository.Get(payment.UserId);
+            var user = _userRepository.GetByCondition(p => p.Id == payment.UserId).FirstOrDefault();
 
             if (user == null) { throw new Exception("User Does not exist"); }
 
@@ -37,12 +36,12 @@ namespace PaymentGateway.Service
 
         public Payment GetPayment(Guid id)
         {
-            return _paymentRepository.Get(id);
+            return _paymentRepository.GetByCondition(p => p.Id == id).FirstOrDefault();
         }
 
-        public List<Payment> GetPaymentsByUser(Guid UserId, Guid MerchantId)
+        public List<Payment> GetPaymentsByUser(Guid userId, Guid merchantId)
         {
-            return _paymentRepository.GetPaymentsByUserAndMerchant(UserId, MerchantId);
+            return _paymentRepository.GetByCondition(p => p.UserId == userId && p.MerchantId == merchantId).ToList();
         }
     }
 }

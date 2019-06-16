@@ -3269,11 +3269,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\psoobray\\Desktop\\payment_gateway\\PaymentGateway.Repository\\PaymentGateway.Repository.csproj",
+      "projectUniqueName": "C:\\Users\\psoobray\\Desktop\\Horcrux\\Github\\payment_gateway\\PaymentGateway.Repository\\PaymentGateway.Repository.csproj",
       "projectName": "PaymentGateway.Repository",
-      "projectPath": "C:\\Users\\psoobray\\Desktop\\payment_gateway\\PaymentGateway.Repository\\PaymentGateway.Repository.csproj",
+      "projectPath": "C:\\Users\\psoobray\\Desktop\\Horcrux\\Github\\payment_gateway\\PaymentGateway.Repository\\PaymentGateway.Repository.csproj",
       "packagesPath": "C:\\Users\\psoobray\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\psoobray\\Desktop\\payment_gateway\\PaymentGateway.Repository\\obj\\",
+      "outputPath": "C:\\Users\\psoobray\\Desktop\\Horcrux\\Github\\payment_gateway\\PaymentGateway.Repository\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -3293,8 +3293,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "C:\\Users\\psoobray\\Desktop\\payment_gateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj": {
-              "projectPath": "C:\\Users\\psoobray\\Desktop\\payment_gateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj"
+            "C:\\Users\\psoobray\\Desktop\\Horcrux\\Github\\payment_gateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj": {
+              "projectPath": "C:\\Users\\psoobray\\Desktop\\Horcrux\\Github\\payment_gateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj"
             }
           }
         }

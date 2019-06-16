@@ -1,5 +1,4 @@
-﻿using PaymentGateway.Data.Context;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +9,7 @@ using PaymentGateway.Data.Repository;
 using AutoMapper;
 using PaymentGateway.Service.Interface;
 using PaymentGateway.Service;
+using PaymentGateway.Repository.Context;
 
 namespace MerchantAdmin
 {

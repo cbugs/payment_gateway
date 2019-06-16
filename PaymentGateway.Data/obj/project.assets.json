@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\psoobray\\Desktop\\payment_gateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj",
+      "projectUniqueName": "C:\\Users\\psoobray\\Desktop\\Horcrux\\Github\\payment_gateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj",
       "projectName": "PaymentGateway.Data",
-      "projectPath": "C:\\Users\\psoobray\\Desktop\\payment_gateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj",
+      "projectPath": "C:\\Users\\psoobray\\Desktop\\Horcrux\\Github\\payment_gateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj",
       "packagesPath": "C:\\Users\\psoobray\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\psoobray\\Desktop\\payment_gateway\\PaymentGateway.Data\\obj\\",
+      "outputPath": "C:\\Users\\psoobray\\Desktop\\Horcrux\\Github\\payment_gateway\\PaymentGateway.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

@@ -1,9 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PaymentGateway.Data.Entity;
+using PaymentGateway.Repository.Context;
 
-namespace PaymentGateway.Data.Context
+namespace PaymentGateway.Repository.Context
 {
-    public class PaymentContext : DbContext
+    public class PaymentContext : BaseContext<PaymentContext>
     {
         public PaymentContext(DbContextOptions<PaymentContext> options) : base(options)
         {

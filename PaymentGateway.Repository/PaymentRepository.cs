@@ -1,9 +1,10 @@
-﻿using PaymentGateway.Data.Context;
+﻿using Microsoft.EntityFrameworkCore;
 using PaymentGateway.Data.Entity;
 using PaymentGateway.Data.Repository.Interface;
+using PaymentGateway.Repository.Context;
 using System;
-using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace PaymentGateway.Data.Repository
 {
@@ -28,25 +29,20 @@ namespace PaymentGateway.Data.Repository
             _context.SaveChanges();
         }
 
-        public Payment Get(Guid id)
-        {
-            return _context.Payments.Find(id);
-        }
-
-        public IEnumerable<Payment> GetAll()
-        {
-            return _context.Payments;
-        }
-
         public void Update(Payment entity)
         {
             _context.Payments.Update(entity);
             _context.SaveChanges();
         }
 
-        public List<Payment> GetPaymentsByUserAndMerchant(Guid userId, Guid merchantId)
+        public IQueryable<Payment> GetByCondition(Expression<Func<Payment, bool>> expression)
         {
-            return _context.Payments.Where(p => p.UserId == userId && p.MerchantId == merchantId).ToList();
+            return _context.Payments.Where(expression).AsNoTracking();
+        }
+
+        public IQueryable<Payment> GetAll()
+        {
+            return _context.Payments.AsNoTracking();
         }
     }
 }
