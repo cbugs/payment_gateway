@@ -38,7 +38,7 @@ namespace MerchantAdmin.Controllers
                 Merchant merchant = await _merchantService.GetMerchant(id);
                 //hide password value
                 merchant.Password = "";
-                return View(_mapper.Map<MerchantViewModel>(_merchantService.GetMerchant(id)));
+                return View(_mapper.Map<MerchantViewModel>(merchant));
             }
         }
 
