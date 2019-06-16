@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace PaymentGateway.Data.Repository.Interface
 {
     public interface IDataRepository<TEntity>
     {
-        void Add(TEntity entity);
-        void Update(TEntity entity);
-        void Delete(TEntity entity);
-        IQueryable<TEntity> GetAll();
-        IQueryable<TEntity> GetByCondition(Expression<Func<TEntity, bool>> expression);
+        Task Add(TEntity entity);
+        Task Update(TEntity entity);
+        Task Delete(TEntity entity);
+        Task<IEnumerable<TEntity>> GetAll();
+        Task<IEnumerable<TEntity>> GetByCondition(Expression<Func<TEntity, bool>> expression);
     }
 }

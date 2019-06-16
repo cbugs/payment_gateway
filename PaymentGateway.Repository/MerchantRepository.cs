@@ -3,8 +3,10 @@ using PaymentGateway.Data.Entity;
 using PaymentGateway.Data.Repository.Interface;
 using PaymentGateway.Repository.Context;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 namespace PaymentGateway.Data.Repository
 {
@@ -17,31 +19,31 @@ namespace PaymentGateway.Data.Repository
             _context = context;
         }
 
-        public void Add(Merchant entity)
+        public async Task Add(Merchant entity)
         {
             _context.Merchants.Add(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
-        public void Delete(Merchant entity)
+        public async Task Delete(Merchant entity)
         {
             _context.Merchants.Remove(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Update(Merchant entity)
+        public async Task Update(Merchant entity)
         {
             _context.Merchants.Update(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        IQueryable<Merchant> IDataRepository<Merchant>.GetAll()
+        public async Task<IEnumerable<Merchant>> GetAll()
         {
-            return _context.Merchants.AsNoTracking();
+            return await _context.Merchants.AsNoTracking().ToListAsync();
         }
 
-        public IQueryable<Merchant> GetByCondition(Expression<Func<Merchant, bool>> expression)
+        public async Task<IEnumerable<Merchant>> GetByCondition(Expression<Func<Merchant, bool>> expression)
         {
-            return _context.Merchants.Where(expression).AsNoTracking();
+            return await _context.Merchants.Where(expression).AsNoTracking().ToListAsync();
         }
     }
 }

@@ -48,7 +48,7 @@ namespace PaymentGateway.Service
 
         public List<Merchant> ListMerchants()
         {
-            return _merchantRepository.GetAll().ToList();
+            return _merchantRepository.GetAllAsync().ToList();
         }
 
         public Merchant GetMerchant(Guid Id)

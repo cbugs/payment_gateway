@@ -5,6 +5,8 @@ using PaymentGateway.Data.Entity;
 using System.Linq.Expressions;
 using PaymentGateway.Repository.Context;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
+using System.Collections.Generic;
 
 namespace PaymentGateway.Data.Repository
 {
@@ -17,32 +19,32 @@ namespace PaymentGateway.Data.Repository
             _context = context;
         }
 
-        public void Add(User entity)
+        public async Task Add(User entity)
         {
             _context.Users.Add(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Delete(User entity)
+        public async Task Delete(User entity)
         {
             _context.Users.Remove(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public void Update(User entity)
+        public async Task Update(User entity)
         {
             _context.Users.Update(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
         }
 
-        public IQueryable<User> GetAll()
+        public async Task<IEnumerable<User>> GetAll()
         {
-            return _context.Users.AsNoTracking();
+            return await _context.Users.AsNoTracking().ToListAsync();
         }
 
-        public IQueryable<User> GetByCondition(Expression<Func<User, bool>> expression)
+        public async Task<IEnumerable<User>> GetByCondition(Expression<Func<User, bool>> expression)
         {
-            return _context.Users.Where(expression).AsNoTracking();
+            return await _context.Users.Where(expression).AsNoTracking().ToListAsync();
         }
     }
 }
