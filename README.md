@@ -28,7 +28,7 @@ The following was tested on Windows machine only.
     #### EWallet
         {'Username':'Bruce','Password':'Campbell'}
     ##### Complete Request Body Example For Credit Card Payment:
-        {"PaymentMethod":"CreditCard","Values":'{'CardNumber':'test','FullName':'Bruce','Address':'Gotham','ExpiryMonth':'12','ExpiryYear':'25','CVC':'test'}',"Amount":9000,"UserId":"28279ef7-ae15-48b4-9fe8-39c96f6a8c6a","Details":"book"}
+        {"PaymentMethod":"CreditCard","Values":"{'CardNumber':'test','FullName':'Bruce','Address':'Gotham','ExpiryMonth':'12','ExpiryYear':'25','CVC':'test'}","Amount":9000,"UserId":"28279ef7-ae15-48b4-9fe8-39c96f6a8c6a","Details":"book"}
 12. Response body should say "Success".
 13. Try out to get list of payments for user. Endpoint "/v1/GetPayments". Simply enter the UserId as param.
 
