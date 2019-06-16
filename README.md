@@ -14,7 +14,7 @@ The following was tested on Windows machine only.
 # How To Use
 1. On Browser, Go to http://localhost:8000.
 2. Create a Merchant with Username and Password, example: Username=test,Password=test.
-3. On Browser, Go to http://localhost:8080/, a swagger UI will open to test the API.
+3. On Browser, Go to http://localhost:8080, a swagger UI will open to test the API.
 4. Try out, "/v1/token" endpoint, and enter Username and Password.
 5. In the Response Body, Copy the bearer token, example: ewfndjghg...
 6. Click on "Authorize" at top of page and in the value field enter "bearer " followed by the access token, example: bearer ewfndjghg...
