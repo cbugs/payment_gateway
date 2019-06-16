@@ -18,7 +18,6 @@ namespace PaymentGateway.Api.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly IMerchantRepository _merchantRepository;
         private readonly ILogger<AuthController> _logger;
         private readonly SecurityKeyConfiguration _securityKeyConfiguration;
         private readonly IMerchantService _merchantService;

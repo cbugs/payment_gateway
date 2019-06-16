@@ -40,7 +40,7 @@ namespace PaymentGateway.Service
         public async Task<bool> CheckIfUsernameExists(string username)
         {
             var merchant = await _merchantRepository.GetByCondition(m => m.Username == username);
-            return merchant != null;
+            return merchant.FirstOrDefault() != null;
         }
 
         public async Task UpdateMerchant(Merchant merchant)
