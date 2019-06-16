@@ -3,6 +3,7 @@ using PaymentGateway.Data.Repository.Interface;
 using PaymentGateway.Service.Interface;
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace PaymentGateway.Service
 {
@@ -17,9 +18,10 @@ namespace PaymentGateway.Service
         }
 
         // get or generate user id based on email or user id
-        public Guid RetrieveUser(Guid userId, string userEmail)
+        public async Task<Guid> RetrieveUser(Guid userId, string userEmail)
         {
-            User user = _userRepository.GetByCondition(u => u.Id == userId || u.UserEmail == userEmail).FirstOrDefault();
+            var users = await _userRepository.GetByCondition(u => u.Id == userId || u.UserEmail == userEmail);
+            User user = users.FirstOrDefault();
             if (user == null)
             {
                 user = new User()
@@ -27,14 +29,14 @@ namespace PaymentGateway.Service
                     UserEmail = userEmail,
                     Id = System.Guid.NewGuid()
                 };
-                _userRepository.Add(user);
+                await _userRepository.Add(user);
             }
 
             //update user if email has changed and id is known
             if (userId != null && !String.IsNullOrEmpty(userEmail) && userEmail != user.UserEmail)
             {
                 user.UserEmail = userEmail;
-                _userRepository.Update(user);
+                await _userRepository.Update(user);
             }
 
             return user.Id;

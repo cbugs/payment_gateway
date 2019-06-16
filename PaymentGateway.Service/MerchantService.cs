@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 using PaymentGateway.Data.Entity;
 using PaymentGateway.Data.Repository.Interface;
 using PaymentGateway.Service.Interface;
@@ -24,41 +25,44 @@ namespace PaymentGateway.Service
             return string.Concat(hash.Select(b => b.ToString("X2")));
         }
 
-        public void CreateMerchant(Merchant merchant)
+        public async Task CreateMerchant(Merchant merchant)
         {
             merchant.Password = HashPassword(merchant.Password);
-            _merchantRepository.Add(merchant);
+            await _merchantRepository.Add(merchant);
         }
 
-        public Merchant Login(string username, string password)
+        public async Task<Merchant> Login(string username, string password)
         {
-            Merchant merchant = _merchantRepository.GetByCondition(m => m.Username == username && m.Password == HashPassword(password)).FirstOrDefault();
-            return merchant;
+            var merchant = await _merchantRepository.GetByCondition(m => m.Username == username && m.Password == HashPassword(password));
+            return merchant.FirstOrDefault();
         }
-        public bool CheckIfUsernameExists(string username)
+
+        public async Task<bool> CheckIfUsernameExists(string username)
         {
-            Merchant merchant = _merchantRepository.GetByCondition(m => m.Username == username).FirstOrDefault();
+            var merchant = await _merchantRepository.GetByCondition(m => m.Username == username);
             return merchant != null;
         }
-        public void UpdateMerchant(Merchant merchant)
+
+        public async Task UpdateMerchant(Merchant merchant)
         {
             merchant.Password = String.IsNullOrEmpty(merchant.Password) ? merchant.Password : HashPassword(merchant.Password);
-            _merchantRepository.Update(merchant);
+            await _merchantRepository.Update(merchant);
         }
 
-        public List<Merchant> ListMerchants()
+        public async Task<IEnumerable<Merchant>> ListMerchants()
         {
-            return _merchantRepository.GetAllAsync().ToList();
+            return await _merchantRepository.GetAll();
         }
 
-        public Merchant GetMerchant(Guid Id)
+        public async Task<Merchant> GetMerchant(Guid Id)
         {
-            return _merchantRepository.GetByCondition(m => m.Id == Id).FirstOrDefault();
+            var merchant = await _merchantRepository.GetByCondition(m => m.Id == Id);
+            return merchant.FirstOrDefault();
         }
 
-        public void DeleteMerchant(Merchant merchant)
+        public async Task DeleteMerchant(Merchant merchant)
         {
-            _merchantRepository.Delete(merchant);
+            await _merchantRepository.Delete(merchant);
         }
     }
 }

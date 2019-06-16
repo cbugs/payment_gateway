@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using PaymentGateway.Data.Entity;
 using PaymentGateway.Data.Repository.Interface;
 using PaymentGateway.Service.Interface;
@@ -18,9 +19,10 @@ namespace PaymentGateway.Service
             _paymentRepository = paymentRepository;
         }
 
-        public void AddPayment(Payment payment)
+        public async Task AddPayment(Payment payment)
         {
-            var user = _userRepository.GetByCondition(p => p.Id == payment.UserId).FirstOrDefault();
+            var users = await _userRepository.GetByCondition(p => p.Id == payment.UserId);
+            User user = users.FirstOrDefault();
 
             if (user == null) { throw new Exception("User Does not exist"); }
 
@@ -31,17 +33,18 @@ namespace PaymentGateway.Service
             }
 
             user.Payments.Add(payment);
-            _userRepository.Update(user);
+            await _userRepository.Update(user);
         }
 
-        public Payment GetPayment(Guid id)
+        public async Task<Payment> GetPayment(Guid id)
         {
-            return _paymentRepository.GetByCondition(p => p.Id == id).FirstOrDefault();
+            var payment = await _paymentRepository.GetByCondition(p => p.Id == id);
+            return payment.FirstOrDefault();
         }
 
-        public List<Payment> GetPaymentsByUser(Guid userId, Guid merchantId)
+        public async Task<IEnumerable<Payment>> GetPaymentsByUser(Guid userId, Guid merchantId)
         {
-            return _paymentRepository.GetByCondition(p => p.UserId == userId && p.MerchantId == merchantId).ToList();
+            return await _paymentRepository.GetByCondition(p => p.UserId == userId && p.MerchantId == merchantId);
         }
     }
 }

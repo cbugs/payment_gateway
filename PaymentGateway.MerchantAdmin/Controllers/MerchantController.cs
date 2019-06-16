@@ -6,6 +6,7 @@ using PaymentGateway.MerchantAdmin.Models;
 using AutoMapper;
 using PaymentGateway.Service.Interface;
 using PaymentGateway.Data.Entity;
+using System.Threading.Tasks;
 
 namespace MerchantAdmin.Controllers
 {
@@ -21,12 +22,12 @@ namespace MerchantAdmin.Controllers
         }
 
         [Route("/")]
-        public ActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View(_merchantService.ListMerchants());
+            return View(await _merchantService.ListMerchants());
         }
 
-        public ActionResult Node(Guid id = new Guid())
+        public async Task<IActionResult> Node(Guid id = new Guid())
         {
             if (id == Guid.Empty)
             {
@@ -34,7 +35,7 @@ namespace MerchantAdmin.Controllers
             }
             else
             {
-                Merchant merchant = _merchantService.GetMerchant(id);
+                Merchant merchant = await _merchantService.GetMerchant(id);
                 //hide password value
                 merchant.Password = "";
                 return View(_mapper.Map<MerchantViewModel>(_merchantService.GetMerchant(id)));
@@ -42,10 +43,10 @@ namespace MerchantAdmin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Node(MerchantViewModel merchant)
+        public async Task<IActionResult> Node(MerchantViewModel merchant)
         {
             // if user already exists and there is a change on username
-            if (_merchantService.CheckIfUsernameExists(merchant.Username) && merchant.Username != merchant.OldUsername)
+            if (await _merchantService.CheckIfUsernameExists(merchant.Username) && merchant.Username != merchant.OldUsername)
             {
                 ModelState.AddModelError("Username", "User Already Exists.");
             }
@@ -60,7 +61,7 @@ namespace MerchantAdmin.Controllers
                 }
                 if (ModelState.IsValid)
                 {
-                    _merchantService.CreateMerchant(_mapper.Map<Merchant>(merchant));
+                    await _merchantService.CreateMerchant(_mapper.Map<Merchant>(merchant));
                     return RedirectToAction("Index");
                 }
             }
@@ -68,17 +69,17 @@ namespace MerchantAdmin.Controllers
             // try to update
             if (ModelState.IsValid)
             {
-                _merchantService.UpdateMerchant(_mapper.Map<Merchant>(merchant));
+                await _merchantService.UpdateMerchant(_mapper.Map<Merchant>(merchant));
                 return RedirectToAction("Index");
             }
            
             return View(merchant);
         }
 
-        public ActionResult Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
-            var merchant = _merchantService.GetMerchant(id);
-            _merchantService.DeleteMerchant(merchant);
+            var merchant = await _merchantService.GetMerchant(id);
+            await _merchantService.DeleteMerchant(merchant);
             return RedirectToAction("Index");
         }
     }

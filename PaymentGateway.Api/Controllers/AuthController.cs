@@ -10,6 +10,7 @@ using PaymentGateway.Api.Models;
 using Microsoft.Extensions.Options;
 using PaymentGateway.Data.Repository.Interface;
 using PaymentGateway.Service.Interface;
+using System.Threading.Tasks;
 
 namespace PaymentGateway.Api.Controllers
 {
@@ -36,9 +37,9 @@ namespace PaymentGateway.Api.Controllers
         /// <returns>JWT Token</returns>
         [HttpPost]
         [Route("token")]
-        public ActionResult GetToken(MerchantModel merchantModel)
+        public async Task<ActionResult> GetToken(MerchantModel merchantModel)
         {
-            var merchant = _merchantService.Login(merchantModel.Username, merchantModel.Password);
+            var merchant = await _merchantService.Login(merchantModel.Username, merchantModel.Password);
             if (merchant == null) { _logger.LogWarning("Unauthorised Access"); return Unauthorized(); }
             try
             {

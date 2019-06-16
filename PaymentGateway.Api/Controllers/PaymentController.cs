@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using PaymentGateway.Service.Interface;
 using PaymentGateway.Data.Entity;
+using System.Threading.Tasks;
 
 namespace PaymentGateway.Api.Controllers
 {
@@ -47,11 +48,11 @@ namespace PaymentGateway.Api.Controllers
         /// </returns>
         [HttpPost]
         [Route("GetUser")]
-        public ActionResult<string> GetUser(UserModel user)
+        public async Task<ActionResult<string>> GetUser(UserModel user)
         {
             try
             {
-                Guid userID = _userService.RetrieveUser(user.UserId, user.UserEmail);
+                Guid userID = await _userService.RetrieveUser(user.UserId, user.UserEmail);
                 _logger.LogInformation("User Create/Get Success");
                 return Ok(userID);
             }
@@ -71,7 +72,7 @@ namespace PaymentGateway.Api.Controllers
         /// </returns>
         [HttpPost]
         [Route("MakePayment")]
-        public ActionResult<string> MakePayment(PaymentModel paymentModel)
+        public async Task<ActionResult<string>> MakePayment(PaymentModel paymentModel)
         {
             try
             {
@@ -97,7 +98,7 @@ namespace PaymentGateway.Api.Controllers
                 };
 
 
-                _paymentService.AddPayment(payment);
+                await _paymentService.AddPayment(payment);
 
                 _logger.LogInformation("Payment Success");
                 //save payment made
@@ -120,11 +121,11 @@ namespace PaymentGateway.Api.Controllers
         /// </returns>
         [HttpPost]
         [Route("GetPayments")]
-        public ActionResult<string> GetPayments(UserRequestModel user)
+        public async Task<ActionResult<string>> GetPayments(UserRequestModel user)
         {
             var merchantClaim = HttpContext.User.Claims.Where(c => c.Type == "MerchantId").FirstOrDefault();
             Guid merchantId = Guid.Parse(merchantClaim.Value);
-            List<Payment> payments = _paymentService.GetPaymentsByUser(user.UserId,merchantId);
+            IEnumerable<Payment> payments = await _paymentService.GetPaymentsByUser(user.UserId,merchantId);
             return Ok(payments);
         }
 
