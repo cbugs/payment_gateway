@@ -3,7 +3,7 @@ using PaymentGateway.Data.Entity;
 
 namespace PaymentGateway.Repository.Context
 {
-    public class MerchantContext : DbContext
+    public class MerchantContext : BaseContext<MerchantContext>
     {
         public MerchantContext(DbContextOptions<MerchantContext> options) : base(options)
         {
