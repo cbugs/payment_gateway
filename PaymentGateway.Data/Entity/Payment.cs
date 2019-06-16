@@ -2,7 +2,7 @@
 
 namespace PaymentGateway.Data.Entity
 {
-    public class Payment : BaseEntity
+    public sealed class Payment : BaseEntity
     {
         public Guid UserId { get; set; }
         public Guid MerchantId { get; set; }
