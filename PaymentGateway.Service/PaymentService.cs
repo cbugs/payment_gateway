@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using PaymentGateway.Data.Entity;
-using PaymentGateway.Data.Repository.Interface;
-using PaymentGateway.Service.Interface;
+using PaymentGateway.Domain.Entities;
+using PaymentGateway.Repository.Interfaces;
+using PaymentGateway.Service.Interfaces;
 
 namespace PaymentGateway.Service
 {
@@ -42,9 +42,9 @@ namespace PaymentGateway.Service
             return payment.FirstOrDefault();
         }
 
-        public async Task<IEnumerable<Payment>> GetPaymentsByUser(Guid userId, Guid merchantId)
+        public async Task<IEnumerable<Payment>> GetPaymentsByMerchant(Guid merchantId)
         {
-            return await _paymentRepository.GetByCondition(p => p.UserId == userId && p.MerchantId == merchantId);
+            return await _paymentRepository.GetByCondition(p => p.MerchantId == merchantId);
         }
     }
 }

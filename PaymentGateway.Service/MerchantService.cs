@@ -4,24 +4,25 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using PaymentGateway.Data.Entity;
-using PaymentGateway.Data.Repository.Interface;
-using PaymentGateway.Service.Interface;
+using PaymentGateway.Domain.Entities;
+using PaymentGateway.Repository.Interfaces;
+using PaymentGateway.Service;
+using PaymentGateway.Service.Interfaces;
 
 namespace PaymentGateway.Service
 {
     public class MerchantService : IMerchantService
     {
-        private IMerchantRepository _merchantRepository;
+        private readonly IMerchantRepository _merchantRepository;
 
         public MerchantService(IMerchantRepository merchantRepository)
         {
             _merchantRepository = merchantRepository;
         }
 
-        private string HashPassword(string Password)
+        private string HashPassword(string password)
         {
-            var hash = new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(Password));
+            var hash = new SHA1Managed().ComputeHash(Encoding.UTF8.GetBytes(password));
             return string.Concat(hash.Select(b => b.ToString("X2")));
         }
 

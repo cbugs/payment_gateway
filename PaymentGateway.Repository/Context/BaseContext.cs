@@ -1,13 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PaymentGateway.Data.Entity;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using PaymentGateway.Domain.Entities;
 
-namespace PaymentGateway.Repository.Context
+namespace PaymentGateway.Infrastructure.Repository.Context
 {
     public abstract class BaseContext<TContext> : DbContext where TContext : BaseContext<TContext>
     {

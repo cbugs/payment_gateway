@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 using System.IO;
+using PaymentGateway.Infrastructure.Repository.Context;
 
 namespace PaymentGateway.Repository.Context
 {

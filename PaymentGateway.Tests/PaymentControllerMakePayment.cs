@@ -4,10 +4,10 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using PaymentGateway.Api.Controllers;
 using PaymentGateway.Api.Models;
-using PaymentGateway.Service.Interface;
 using System;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using PaymentGateway.Service.Interfaces;
 using Xunit;
 
 namespace PaymentGateway.Tests

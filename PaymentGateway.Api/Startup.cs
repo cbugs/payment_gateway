@@ -9,16 +9,16 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using PaymentGateway.Api.Models;
-using PaymentGateway.Data.Repository;
-using PaymentGateway.Data.Repository.Interface;
-using PaymentGateway.Repository.Context;
+using PaymentGateway.Infrastructure.Repository;
+using PaymentGateway.Infrastructure.Repository.Context;
+using PaymentGateway.Repository.Interfaces;
 using PaymentGateway.Service;
-using PaymentGateway.Service.Interface;
+using PaymentGateway.Service.Interfaces;
 using Serilog;
 using Swashbuckle.AspNetCore.Filters;
 using Swashbuckle.AspNetCore.Swagger;
 
-namespace PaymentGatewayApi
+namespace PaymentGateway.Api
 {
     public class Startup
     {

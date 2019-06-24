@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using PaymentGateway.Api.Utility;
 using System.ComponentModel.DataAnnotations;
+using PaymentGateway.Api.Models;
 
 namespace PaymentGateway.Api.Abstract
 {
@@ -35,7 +36,7 @@ namespace PaymentGateway.Api.Abstract
             CVC = cVC;
         }
 
-        public override bool Process()
+        public override BankObject Process()
         {
             return BankSimulationUtility.ProcessCreditCard(this);
         }

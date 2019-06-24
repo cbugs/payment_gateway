@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using PaymentGateway.Data.Entity;
+using PaymentGateway.Domain.Entities;
 using PaymentGateway.MerchantAdmin.Models;
 
 namespace PaymentGateway.MerchantAdmin.Mappers

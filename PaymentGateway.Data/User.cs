@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
+using PaymentGateway.Domain.Entities;
 
-namespace PaymentGateway.Data.Entity
+namespace PaymentGateway.Domain.Entities
 {
     public sealed class User : BaseEntity
     {

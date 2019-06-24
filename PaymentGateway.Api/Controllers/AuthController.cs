@@ -8,13 +8,12 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Logging;
 using PaymentGateway.Api.Models;
 using Microsoft.Extensions.Options;
-using PaymentGateway.Data.Repository.Interface;
-using PaymentGateway.Service.Interface;
 using System.Threading.Tasks;
+using PaymentGateway.Service.Interfaces;
 
 namespace PaymentGateway.Api.Controllers
 {
-    [Route("v1/")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -32,14 +31,13 @@ namespace PaymentGateway.Api.Controllers
         /// <summary>
         /// JWT Token Authentication for Merchant Role
         /// </summary>
-        /// <param name="merchantRequest"></param>
+        /// <param name="merchantModel"></param>
         /// <returns>JWT Token</returns>
         [HttpPost]
-        [Route("token")]
         public async Task<ActionResult> GetToken(MerchantModel merchantModel)
         {
             var merchant = await _merchantService.Login(merchantModel.Username, merchantModel.Password);
-            if (merchant == null) { _logger.LogWarning("Unauthorised Access"); return Unauthorized(); }
+            if (merchant == null) { _logger.LogWarning("Unauthorized Access"); return Unauthorized(); }
             try
             {
                 //security key

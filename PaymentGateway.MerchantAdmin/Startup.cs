@@ -1,17 +1,17 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using PaymentGateway.Data.Repository.Interface;
-using PaymentGateway.Data.Repository;
-using AutoMapper;
-using PaymentGateway.Service.Interface;
+using PaymentGateway.Infrastructure.Repository;
+using PaymentGateway.Infrastructure.Repository.Context;
+using PaymentGateway.Repository.Interfaces;
 using PaymentGateway.Service;
-using PaymentGateway.Repository.Context;
+using PaymentGateway.Service.Interfaces;
 
-namespace MerchantAdmin
+namespace PaymentGateway.MerchantAdmin
 {
     public class Startup
     {

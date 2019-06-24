@@ -1,14 +1,15 @@
 ﻿using System;
-using PaymentGateway.Data.Repository.Interface;
-using System.Linq;
-using PaymentGateway.Data.Entity;
-using System.Linq.Expressions;
-using PaymentGateway.Repository.Context;
-using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using PaymentGateway.Domain.Entities;
+using PaymentGateway.Infrastructure.Repository.Context;
+using PaymentGateway.Repository.Context;
+using PaymentGateway.Repository.Interfaces;
 
-namespace PaymentGateway.Data.Repository
+namespace PaymentGateway.Infrastructure.Repository
 {
     public class UserRepository : IUserRepository
     {

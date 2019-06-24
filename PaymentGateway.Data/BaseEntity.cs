@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PaymentGateway.Data.Entity
+namespace PaymentGateway.Domain.Entities
 {
     public class BaseEntity
     {

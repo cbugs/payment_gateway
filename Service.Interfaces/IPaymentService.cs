@@ -1,14 +1,14 @@
-﻿using PaymentGateway.Data.Entity;
+﻿using PaymentGateway.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace PaymentGateway.Service.Interface
+namespace PaymentGateway.Service.Interfaces
 {
     public interface IPaymentService
     {
         Task AddPayment(Payment payment);
-        Task<IEnumerable<Payment>> GetPaymentsByUser(Guid userId, Guid merchantId);
+        Task<IEnumerable<Payment>> GetPaymentsByMerchant(Guid merchantId);
         Task<Payment>GetPayment(Guid id);
     }
 }

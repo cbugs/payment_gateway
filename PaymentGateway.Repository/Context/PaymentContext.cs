@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PaymentGateway.Data.Entity;
-using PaymentGateway.Repository.Context;
+using PaymentGateway.Domain.Entities;
 
-namespace PaymentGateway.Repository.Context
+namespace PaymentGateway.Infrastructure.Repository.Context
 {
     public class PaymentContext : BaseContext<PaymentContext>
     {

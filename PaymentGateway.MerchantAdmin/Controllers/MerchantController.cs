@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using PaymentGateway.Data.Repository.Interface;
 using PaymentGateway.MerchantAdmin.Models;
 using AutoMapper;
-using PaymentGateway.Service.Interface;
-using PaymentGateway.Data.Entity;
 using System.Threading.Tasks;
+using PaymentGateway.Domain.Entities;
+using PaymentGateway.Service.Interfaces;
 
 namespace MerchantAdmin.Controllers
 {

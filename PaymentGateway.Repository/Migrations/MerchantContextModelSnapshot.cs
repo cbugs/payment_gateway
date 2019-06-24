@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using PaymentGateway.Infrastructure.Repository.Context;
 using PaymentGateway.Repository.Context;
 
 namespace PaymentGateway.Repository.Migrations

@@ -1,15 +1,15 @@
-﻿using PaymentGateway.Data.Entity;
-using PaymentGateway.Data.Repository.Interface;
-using PaymentGateway.Service.Interface;
-using System;
+﻿using System;
 using System.Linq;
 using System.Threading.Tasks;
+using PaymentGateway.Domain.Entities;
+using PaymentGateway.Repository.Interfaces;
+using PaymentGateway.Service.Interfaces;
 
 namespace PaymentGateway.Service
 {
     public class UserService : IUserService
     {
-        private IUserRepository _userRepository;
+        private readonly IUserRepository _userRepository;
         //private IUserRepository _userRepository;
 
         public UserService(IUserRepository userRepository)

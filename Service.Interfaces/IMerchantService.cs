@@ -1,9 +1,9 @@
-﻿using PaymentGateway.Data.Entity;
+﻿using PaymentGateway.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace PaymentGateway.Service.Interface
+namespace PaymentGateway.Service.Interfaces
 {
     public interface IMerchantService
     {

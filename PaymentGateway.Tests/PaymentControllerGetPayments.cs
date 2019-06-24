@@ -4,12 +4,12 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using PaymentGateway.Api.Controllers;
 using PaymentGateway.Api.Models;
-using PaymentGateway.Data.Entity;
-using PaymentGateway.Service.Interface;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using PaymentGateway.Domain.Entities;
+using PaymentGateway.Service.Interfaces;
 using Xunit;
 
 namespace PaymentGateway.Tests
@@ -21,56 +21,54 @@ namespace PaymentGateway.Tests
         {
             // Arrange
             var merchantId = Guid.Parse("e43a794b-9ba5-46d8-8f74-1da699b84093");
-            var payments = new List<Payment>();
-            payments.Add(new Payment()
+            var payments = new List<Payment>
             {
-                CreatedDate = DateTime.Now,
-                ModifiedDate = DateTime.Now,
-                Id = new Guid(),
-                UserId = new Guid(),
-                MerchantId = merchantId,
-                PaymentAmount = 1000,
-                PaymentDetails = "Book"
-            });
-
-            payments.Add(new Payment()
-            {
-                CreatedDate = DateTime.Now,
-                ModifiedDate = DateTime.Now,
-                Id = new Guid(),
-                UserId = new Guid(),
-                MerchantId = merchantId,
-                PaymentAmount = 2000,
-                PaymentDetails = "Laptop"
-            });
-
-            var user = new UserRequestModel()
-            {
-                UserId = Guid.Parse("e43a794b-9ba5-46d8-8f74-1da699b84093")
+                new Payment()
+                {
+                    CreatedDate = DateTime.Now,
+                    ModifiedDate = DateTime.Now,
+                    Id = new Guid(),
+                    UserId = new Guid(),
+                    MerchantId = merchantId,
+                    PaymentAmount = 1000,
+                    PaymentDetails = "Book"
+                },
+                new Payment()
+                {
+                    CreatedDate = DateTime.Now,
+                    ModifiedDate = DateTime.Now,
+                    Id = new Guid(),
+                    UserId = new Guid(),
+                    MerchantId = merchantId,
+                    PaymentAmount = 2000,
+                    PaymentDetails = "Laptop"
+                }
             };
 
             var mockPaymentService = new Mock<IPaymentService>();
             var mockUserService = new Mock<IUserService>();
             var mockLogger = new Mock<ILogger<PaymentController>>();
 
-            mockPaymentService.Setup(ps => ps.GetPaymentsByUser(user.UserId, merchantId))
+            mockPaymentService.Setup(ps => ps.GetPaymentsByMerchant(merchantId))
                 .ReturnsAsync(payments);
 
-            var controller = new PaymentController(mockPaymentService.Object, mockUserService.Object, mockLogger.Object);
-
-            controller.ControllerContext = new ControllerContext
+            var controller = new PaymentController(mockPaymentService.Object, mockUserService.Object, mockLogger.Object)
             {
-                HttpContext = new DefaultHttpContext
+                ControllerContext = new ControllerContext
                 {
-                    User = new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
+                    HttpContext = new DefaultHttpContext
                     {
-                        new Claim("MerchantId", "e43a794b-9ba5-46d8-8f74-1da699b84093")
-                    }))
+                        User = new ClaimsPrincipal(new ClaimsIdentity(new Claim[]
+                        {
+                            new Claim("MerchantId", "e43a794b-9ba5-46d8-8f74-1da699b84093")
+                        }))
+                    }
                 }
             };
 
+
             // Act
-            var actionResult = await controller.GetPayments(user);
+            var actionResult = await controller.GetPayments();
             var result = actionResult.Result as OkObjectResult;
 
             // Assert

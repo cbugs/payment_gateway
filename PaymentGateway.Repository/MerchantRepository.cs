@@ -1,14 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PaymentGateway.Data.Entity;
-using PaymentGateway.Data.Repository.Interface;
-using PaymentGateway.Repository.Context;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using PaymentGateway.Domain.Entities;
+using PaymentGateway.Infrastructure.Repository.Context;
+using PaymentGateway.Repository.Context;
+using PaymentGateway.Repository.Interfaces;
 
-namespace PaymentGateway.Data.Repository
+namespace PaymentGateway.Infrastructure.Repository
 {
     public class MerchantRepository : IMerchantRepository
     {

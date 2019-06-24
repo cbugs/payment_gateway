@@ -5,11 +5,11 @@ using PaymentGateway.Api.Abstract;
 using PaymentGateway.Api.Abstract.Factory;
 using Microsoft.Extensions.Logging;
 using PaymentGateway.Api.Models;
-using System.Collections.Generic;
 using System.Linq;
-using PaymentGateway.Service.Interface;
-using PaymentGateway.Data.Entity;
 using System.Threading.Tasks;
+using PaymentGateway.Api.Utility;
+using PaymentGateway.Domain.Entities;
+using PaymentGateway.Service.Interfaces;
 
 namespace PaymentGateway.Api.Controllers
 {
@@ -19,7 +19,7 @@ namespace PaymentGateway.Api.Controllers
     /// Contains endpoints for the API such as retrieve UserId, Make Payments, or get list of payments per user.
     /// </summary>
 
-    [Route("v1/")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     [Authorize(Roles = "Merchant")]
     public class PaymentController : ControllerBase
@@ -46,8 +46,7 @@ namespace PaymentGateway.Api.Controllers
         /// <returns>
         /// Generated User Id.
         /// </returns>
-        [HttpPost]
-        [Route("GetUser")]
+        [HttpPut]
         public async Task<ActionResult<string>> GetUser(UserModel user)
         {
             try
@@ -71,34 +70,37 @@ namespace PaymentGateway.Api.Controllers
         /// The status of the payment made.
         /// </returns>
         [HttpPost]
-        [Route("MakePayment")]
         public async Task<ActionResult<string>> MakePayment(PaymentModel paymentModel)
         {
             try
             {
                 var paymentObject = new PaymentObject().Create((PaymentMethods)Enum.Parse(typeof(PaymentMethods), paymentModel.PaymentMethod, true), paymentModel.Values);
                 paymentObject.Amount = paymentModel.Amount;
-                paymentObject.Details = paymentModel.Details;
+                paymentObject.Details = paymentModel.Values;
 
-                if (!paymentObject.Process())
-                {
-                    return BadRequest("Transaction Not Approved");
-                }
+                var bankResponse = paymentObject.Process();
 
                 // Get MerchantId from JWT Claim
-                var merchantClaim = HttpContext.User.Claims.Where(c => c.Type == "MerchantId").FirstOrDefault();
-                Guid merchantId = Guid.Parse(merchantClaim.Value);
+                var merchantClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == "MerchantId");
+                if (merchantClaim == null) return StatusCode(400, "Request Invalid");
 
-                Payment payment = new Payment()
+                var merchantId = Guid.Parse(merchantClaim.Value);
+                var payment = new Payment()
                 {
                     PaymentAmount = paymentModel.Amount,
-                    PaymentDetails = paymentModel.Details,
+                    PaymentDetails = paymentModel.Values,
                     UserId = paymentModel.UserId,
-                    MerchantId = merchantId
+                    MerchantId = merchantId,
+                    PaymentStatus = bankResponse.status
                 };
 
 
                 await _paymentService.AddPayment(payment);
+
+                if (!bankResponse.status)
+                {
+                    return BadRequest("Transaction Not Approved");
+                }
 
                 _logger.LogInformation("Payment Success");
                 //save payment made
@@ -115,17 +117,18 @@ namespace PaymentGateway.Api.Controllers
         /// <summary>
         /// Get the list of payments done by user of authenticated merchant
         /// </summary>
-        /// <param name="user"></param>
+        /// <param name="id"></param>
         /// <returns>
         /// List of payments
         /// </returns>
-        [HttpPost]
-        [Route("GetPayments")]
-        public async Task<ActionResult<string>> GetPayments(UserRequestModel user)
+        [HttpGet]
+        public async Task<ActionResult<string>> GetPayments()
         {
-            var merchantClaim = HttpContext.User.Claims.Where(c => c.Type == "MerchantId").FirstOrDefault();
-            Guid merchantId = Guid.Parse(merchantClaim.Value);
-            IEnumerable<Payment> payments = await _paymentService.GetPaymentsByUser(user.UserId,merchantId);
+            var merchantClaim = HttpContext.User.Claims.FirstOrDefault(c => c.Type == "MerchantId");
+            if (merchantClaim == null) return StatusCode(400, "Request Invalid");
+
+            var merchantId = Guid.Parse(merchantClaim.Value);
+            var payments = await _paymentService.GetPaymentsByMerchant(merchantId);
             return Ok(payments);
         }
 

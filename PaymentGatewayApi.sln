@@ -7,15 +7,29 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway.Api", "Payme
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway.MerchantAdmin", "PaymentGateway.MerchantAdmin\PaymentGateway.MerchantAdmin.csproj", "{FF8E67C1-3EE7-4EC5-A5BC-8E5EDE157258}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway.Repository", "PaymentGateway.Repository\PaymentGateway.Repository.csproj", "{FD299BBD-AF9F-4EA8-9896-6720C0C2F256}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway.Infrastructure.Repository", "PaymentGateway.Repository\PaymentGateway.Infrastructure.Repository.csproj", "{FD299BBD-AF9F-4EA8-9896-6720C0C2F256}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway.Service", "PaymentGateway.Service\PaymentGateway.Service.csproj", "{683F63EB-D992-4FFF-A46A-313695EF127E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway.Data", "PaymentGateway.Data\PaymentGateway.Data.csproj", "{58DC308F-BC76-49E8-BB28-ECADF13C99A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway.Domain.Entities", "PaymentGateway.Data\PaymentGateway.Domain.Entities.csproj", "{58DC308F-BC76-49E8-BB28-ECADF13C99A9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{8C087955-B928-4118-96DF-A37D8EEDD66B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05-UI", "05-UI", "{8C087955-B928-4118-96DF-A37D8EEDD66B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaymentGateway.Tests", "PaymentGateway.Tests\PaymentGateway.Tests.csproj", "{C0D85E36-3DE3-499C-B2CA-E9D078CE9F61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway.Tests", "PaymentGateway.Tests\PaymentGateway.Tests.csproj", "{C0D85E36-3DE3-499C-B2CA-E9D078CE9F61}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01-Domain", "01-Domain", "{7BF0FE45-1077-4B61-91C2-D1C3BE168A0E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway.Repository.Interfaces", "PaymentGateway.Domain.Interfaces\PaymentGateway.Repository.Interfaces.csproj", "{FD75F63A-E9C2-4DE4-A747-BD691C9D423F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03-Service", "03-Service", "{9E2EF916-7941-43E5-8F62-58480CACBA27}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PaymentGateway.Service.Interfaces", "Service.Interfaces\PaymentGateway.Service.Interfaces.csproj", "{FFEFB540-1CB9-448A-848F-150311808EE4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04-Infrastructure", "04-Infrastructure", "{F5E6FBFF-1B6B-4793-9761-BC7679738E0A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02-Repository", "02-Repository", "{24AC804A-A65E-459B-A04A-F61CAC6C010B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06-Test", "06-Test", "{DD87E524-FA49-4DA7-A7C2-BF601BDA738B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +61,14 @@ Global
 		{C0D85E36-3DE3-499C-B2CA-E9D078CE9F61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C0D85E36-3DE3-499C-B2CA-E9D078CE9F61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C0D85E36-3DE3-499C-B2CA-E9D078CE9F61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD75F63A-E9C2-4DE4-A747-BD691C9D423F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD75F63A-E9C2-4DE4-A747-BD691C9D423F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD75F63A-E9C2-4DE4-A747-BD691C9D423F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD75F63A-E9C2-4DE4-A747-BD691C9D423F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFEFB540-1CB9-448A-848F-150311808EE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFEFB540-1CB9-448A-848F-150311808EE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFEFB540-1CB9-448A-848F-150311808EE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFEFB540-1CB9-448A-848F-150311808EE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,6 +76,12 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{CAA1F73F-F357-4D6A-9BD4-22FEA2897001} = {8C087955-B928-4118-96DF-A37D8EEDD66B}
 		{FF8E67C1-3EE7-4EC5-A5BC-8E5EDE157258} = {8C087955-B928-4118-96DF-A37D8EEDD66B}
+		{FD299BBD-AF9F-4EA8-9896-6720C0C2F256} = {F5E6FBFF-1B6B-4793-9761-BC7679738E0A}
+		{683F63EB-D992-4FFF-A46A-313695EF127E} = {9E2EF916-7941-43E5-8F62-58480CACBA27}
+		{58DC308F-BC76-49E8-BB28-ECADF13C99A9} = {7BF0FE45-1077-4B61-91C2-D1C3BE168A0E}
+		{C0D85E36-3DE3-499C-B2CA-E9D078CE9F61} = {DD87E524-FA49-4DA7-A7C2-BF601BDA738B}
+		{FD75F63A-E9C2-4DE4-A747-BD691C9D423F} = {24AC804A-A65E-459B-A04A-F61CAC6C010B}
+		{FFEFB540-1CB9-448A-848F-150311808EE4} = {9E2EF916-7941-43E5-8F62-58480CACBA27}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {02D2673A-47BD-44E9-9601-1CF84A5A44C3}
